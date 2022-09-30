@@ -41,6 +41,7 @@ export 'scripts/books.dart';
 Future<List<Book>> queryBooks(
   String query, {
   QueryType? queryType,
+  String? token,
   String? langRestrict,
   int maxResults = 10,
   OrderBy? orderBy,
@@ -68,6 +69,9 @@ Future<List<Book>> queryBooks(
   if (printType != null) {
     q += '&printType=${printType.toString().replaceAll('PrintType.', '')}';
   }
+
+  if (token != null) q += '&key=$token';
+
   final result = await http.get(Uri.parse(q));
   if (result.statusCode == 200) {
     final books = <Book>[];
