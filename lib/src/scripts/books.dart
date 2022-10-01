@@ -250,7 +250,8 @@ class BookInfo {
       Uri uri = Uri.parse(zoomedImg);
       if (reschemeImageLinks) {
         if (uri.isScheme('HTTP')) {
-          uri = Uri.parse(value.toString().replaceAll('http://', 'https://'));
+          uri =
+              Uri.parse(zoomedImg.toString().replaceAll('http://', 'https://'));
         }
       }
       imageLinks.addAll({key: uri});
